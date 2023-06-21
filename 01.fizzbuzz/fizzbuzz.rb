@@ -1,17 +1,16 @@
 #!/usr/bin/env ruby
 
-x = 0
-while  x < 20
-  x += 1
-  case 
-  when x % 3 == 0 && x % 5 == 0
+(1..20).each do |i|
+
+  if i % 15 == 0 
     puts "FizzBuzz"
-  when x % 3 == 0
+  elsif i % 3 == 0
     puts "Fizz"
-  when x % 5 == 0
+  elsif i % 5 == 0
     puts "Buzz"
   else
-    puts x
+    puts i
   end
+
 end
 

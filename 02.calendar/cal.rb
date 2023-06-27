@@ -8,44 +8,37 @@ params = ARGV.getopts("y:m:")
 year = params["y"].to_i
 month = params["m"].to_i
 
-current_year = Date.today.year
-current_month = Date.today.month
-
 if params["y"].nil?
-  year = current_year
+  year = Date.today.year
 end
 
 if params["m"].nil?
-  month = current_month
+  month = Date.today.month
 end
 
-first_day = Date.new(year, month, 1)
-first_wday = first_day.wday
-last_day = Date.new(year, month, -1)
+last_date = Date.new(year, month, -1)
 
 puts "      #{month}月 #{year}"
 puts "日 月 火 水 木 金 土" 
 
-space = "   "
-print " #{space * first_wday}1"
-
-if first_wday == 6
-  print "\n"
-end
-
-(2..last_day.day).each do |day|
-
+(1..last_date.day).each do |day|
   date = Date.new(year, month, day)
 
-  if date.sunday?
-    print "#{day}".rjust(2)
-  elsif
-    print "#{day}".rjust(3)
+  if day == 1
+    space = "   "
+    print " #{space * date.wday}1 "
+  
+    if date.wday == 6
+      print "\n"
+    end
   end
 
-  if date.saturday?
-    print "\n"
+  if day > 1
+    print day.to_s.rjust(2)
+    print " "
+  
+    if date.saturday?
+      print "\n"
+    end
   end
-
 end
-

@@ -20,15 +20,14 @@ first_date = Date.new(year, month, 1)
 last_date = Date.new(year, month, -1)
 
 puts "      #{month}月 #{year}"
-puts "日 月 火 水 木 金 土" 
+puts "日 月 火 水 木 金 土"
 
-space = "   "
-print "#{space * first_date.wday}"
+print "   " * first_date.wday
 
-(1..last_date.day).each do |day|
-  date = Date.new(year, month, day)
+(first_date..last_date).each do |date|
+ 
 
-  print day.to_s.rjust(2)
+  print date.day.to_s.rjust(2)
   print " "
   
   if date.saturday?

@@ -19,11 +19,11 @@ point = 0
 frames.each_with_index do |frame, i|
   point += if i >= 9
              frame.sum
-           elsif frame[0] == 10 && frames[i + 1][0] == 10 # strike
+           elsif frame[0] == 10 && frames[i + 1][0] == 10 
              20 + frames[i + 2][0]
            elsif frame[0] == 10
              10 + frames[i + 1].sum
-           elsif frame.sum == 10 # spare
+           elsif frame.sum == 10 
              10 + frames[i + 1][0]
            else
              frame.sum
